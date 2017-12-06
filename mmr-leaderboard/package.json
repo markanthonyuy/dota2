@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp build/index.html build/sea.html; cp build/index.html build/america.html; cp build/index.html build/china.html; cp build/index.html build/europe.html; touch build/autocommit.sh; echo 'git init; git remote add origin git@github.com:markanthonyuy/dota2-mmr-leaderboard.git; git add -A .; git commit -m \"update\" .; git push origin master -f' > build/autocommit.sh; chmod +x build/autocommit.sh; touch build/README.md; echo -e '# Dota2 MMR Leaderboard\nDota 2 MMR Leaderboard\n\n## Dev notes\n\n### Cronjobs\n```bash\n0 */6 * * * get-mmr-leaderboard.sh\n0 */6 * * * cd  ~/Documents/projects/scraper/dota2/mmr-leaderboard/ && npm run build && cd build && ./autocommit.sh\n```\n\n#### get-mmr-leaderboard.sh\n```bash\n#!/usr/bin/env sh\n/home/administrator/.nvm/versions/node/v8.6.0/bin/node /home/administrator/Documents/projects/scraper/dota2-leaderboard.js\n```\n\n#### autocommit.sh (This file is generated in npm run build script, Make sure to use and configure ssh, Make sure it excecutable)\n```bash\ngit init; git remote add origin git@github.com:markanthonyuy/dota2-mmr-leaderboard.git; git add -A .; git commit -m \"update\" .; git push origin master -f\n```' > build/README.md",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
